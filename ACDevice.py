@@ -36,7 +36,7 @@ class AC_Device():
         device['room_type'] = room_type
         device['publish_topic'] = "device/REGISTER"
 
-        print("Published to device/REGISTER to register " + device_id)
+        print("Published to topic device/REGISTER to register " + device_id)
 
         # Initialize a dictionary to be sent as publish message
         message = {}

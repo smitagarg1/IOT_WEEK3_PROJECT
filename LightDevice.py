@@ -7,6 +7,7 @@ import datetime
 from paho.mqtt import client
 
 
+
 class Light_Device():
 
     # setting up the intensity choices for Smart Light Bulb  
@@ -37,7 +38,7 @@ class Light_Device():
         device['room_type'] = room_type
         device['publish_topic'] = "device/REGISTER"
 
-        print("Published to device/REGISTER to register " + device_id)
+        print("Published to topic device/REGISTER to register " + device_id)
 
         # Initialize a dictionary to be sent as publish message
         message = {}
@@ -53,14 +54,22 @@ class Light_Device():
 
     # Connect method to subscribe to various topics. 
     def _on_connect(self, client, userdata, flags, result_code):
-        pass
+        #Smita adding
+        print("Connected with result code " + str(result_code))
+        topic="device/"+self._room_type+"/"+self._device_type+"/#"
+        print("subscribing to "+topic)
+        client.subscribe(topic)
 
     # method to process the recieved messages and publish them on relevant topics 
     # this method can also be used to take the action based on received commands
     def _on_message(self, client, userdata, msg):
-        pass
+        #Smita added
+        print("Received a messsage on " + msg.topic)
+        item = {"topic": msg.topic, "payload": msg.payload}
+        print(item)
+        self.get_consolidated_status(msg.payload)
 
-    # Getting the current switch status of devices 
+    # Getting the current switch status of devices
     def _get_switch_status(self):
         pass
 
@@ -80,3 +89,7 @@ class Light_Device():
     #Smita added
     def _on_disconnect(client, userdata, result_code):
         print("Disconnected with result code " + str(result_code))
+
+    #Smita added
+    def get_consolidated_status(payload):
+        pass

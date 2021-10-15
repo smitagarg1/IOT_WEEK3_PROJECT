@@ -62,5 +62,9 @@ for devices in config['devices']:
             ac_device_1 = AC_Device(device_id,device_type, rooms_ac.pop(0), host, port)
             time.sleep(WAIT_TIME)
 
+
+
+
+edge_server_1.get_status("device_id","LIGHT_0")
 #print("\nSmart Home Simulation stopped.")
 #edge_server_1.terminate()
