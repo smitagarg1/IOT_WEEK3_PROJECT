@@ -41,14 +41,18 @@ class Edge_Server:
         item={"topic":msg.topic, "payload":msg.payload}
 
         if item['topic'] == "device/REGISTER":
-            print()
-            print("Received by Edge Server a messsage on topic " + item['topic'] + " to register following device")
+            print("\nReceived by Edge Server a messsage on topic " + item['topic'] + " to register following device")
             self.set_registered_device_list(item)
         elif item['topic'] == "device/ACKSTATUS":
             self.receive_status(item)
 
         elif item['topic'] == "device/ACKSWITCH":
-            self.receive_status(item)
+            s = str(item['payload'].decode("utf-8"))
+            dict = json.loads(s)
+            if dict['ack_message'] =="Successfull":
+                print("Device "+dict['device_id']+" successfully Switched "+dict['command'])
+            elif dict['ack_message'] =="Not Successfull":
+                print("There was problem switching "+dict['device_id']+" "+dict['command'])
 
 
     # Returning the current registered list
@@ -72,10 +76,7 @@ class Edge_Server:
 
         device = {}
 
-        device['publish_topic'] = "device/"+device_type+"/REGISTER_ACK"
-        device['device_id'] = device_id
-        device['device_type'] = device_type
-        device['ack_message'] = device_id + " registered successfully"
+        topic = "device/"+device_id+"/REGISTER_ACK"
 
         message = {}
         # Generate timestamp in YYYY-MM-DD HH:MM:SS format
@@ -85,9 +86,10 @@ class Edge_Server:
         message['ack_message'] = device_id + " registered successfully"
 
 
+
         # Publish the message
-        self.client.publish(device["publish_topic"], json.dumps(message))
-        print("Published by Edge Server to topic device/"+device_type+"/REGISTER_ACK to acknowledge successfull device registration")
+        self.client.publish(topic, json.dumps(message),qos=2)
+        print("Published by Edge Server to topic "+topic+" to acknowledge successfull device registration")
         print("No of registered device now " + str(len(self._registered_list)))
 
 
@@ -109,10 +111,7 @@ class Edge_Server:
     # Sending Switch on and off for the connected devices
     def switch_command(self, key, value,command):
         # Smita publish
-        device = {}
         topic = "device/" + value + "/SWITCH"
-        device['publish_topic'] = topic
-        device['command'] = command
 
         message = {}
         # Generate timestamp in YYYY-MM-DD HH:MM:SS format
@@ -121,7 +120,7 @@ class Edge_Server:
 
         # Publish the message
         print("Published to " + topic + " to switch device to " + command + " on basis of " + key)
-        self.client.publish(device["publish_topic"], json.dumps(message))
+        self.client.publish(topic, json.dumps(message))
 
 
 
@@ -131,6 +130,7 @@ class Edge_Server:
         dict = json.loads(s)
 
         self._device_status.append(dict)
+        time.sleep(10)
 
 
     #Smita added

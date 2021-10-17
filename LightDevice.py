@@ -32,11 +32,7 @@ class Light_Device():
 
     def _register_device(self, device_id, room_type ,device_type):
         #Smita implements Call to Edge server to register device
-        device = {}
-        device['device_id'] = device_id
-        device['device_type'] = device_type
-        device['room_type'] = room_type
-        device['publish_topic'] = "device/REGISTER"
+        topic= "device/REGISTER"
 
         # Initialize a dictionary to be sent as publish message
         message = {}
@@ -50,65 +46,69 @@ class Light_Device():
         # Publish the message
      
         print("\nPublished by " + self._device_id + " to topic device/REGISTER to register on edge server")
-        self.client.publish(device["publish_topic"], json.dumps(message))
+        self.client.publish(topic, json.dumps(message))
 
     # Connect method to subscribe to various topics. 
     def _on_connect(self, client, userdata, flags, result_code):
-        #Smita adding
+        #Smita adding topics subscribed by LIGHT DEVICE
         print("\nConnected with result code " + str(result_code))
-        topic_register_ack="device/"+self._device_type+"/REGISTER_ACK"
+
+        topic_register_ack="device/"+self._device_id+"/REGISTER_ACK"
+
+        #Topics to get status on basis of device_id , device_type or room_type
         topic_deviceid="device/"+self._device_id+"/STATUS"
         topic_room_type = "device/" + self._room_type + "/STATUS"
         topic_device_type = "device/" + self._device_type + "/STATUS"
 
+        # Topics to SWITCH ON/OFF on  basis of device_id , device_type or room_type
         topic_deviceid_switch = "device/" + self._device_id + "/SWITCH"
         topic_room_type_switch = "device/" + self._room_type + "/SWITCH"
         topic_device_type_switch = "device/" + self._device_type + "/SWITCH"
 
         print("\nLight Device "+self._device_id+" subscribing to following topics" )
-        print("\n"+self._device_id+"::"+topic_register_ack+" : Topic for registration acknowledgement from edge server")
-        print("\n"+self._device_id+"::"+topic_deviceid+" : Topic for getting status on basis of device_id")
-        print("\n"+self._device_id+"::"+topic_room_type+" : Topic for getting status on basis of room_type")
-        print("\n"+self._device_id+"::"+topic_device_type+" : Topic for getting status on basis of device_type")
-        print("\n"+self._device_id + "::" + topic_deviceid_switch + " : Topic for switching on and off on basis of device_id")
-        print("\n"+self._device_id + "::" + topic_room_type_switch + " : Topic for switching on and off on basis of room_type")
-        print("\n"+self._device_id + "::" + topic_device_type_switch + " : Topic for switching on and off on basis of device_type")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_register_ack+" :::: Topic for registration acknowledgement from edge server")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_deviceid+"  :::: Topic for getting status on basis of device_id")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_room_type+"  :::: Topic for getting status on basis of room_type")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_device_type+"  :::: Topic for getting status on basis of device_type")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+ topic_deviceid_switch + "  :::: Topic for switching on and off on basis of device_id")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+ topic_room_type_switch + "  :::: Topic for switching on and off on basis of room_type")
+        print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+ topic_device_type_switch + "  :::: Topic for switching on and off on basis of device_type")
 
         client.subscribe([(topic_deviceid, 1),(topic_register_ack, 0), (topic_room_type, 0), (topic_device_type, 0),(topic_deviceid_switch,0)])
 
     # method to process the recieved messages and publish them on relevant topics 
     # this method can also be used to take the action based on received commands
     def _on_message(self, client, userdata, msg):
-        #Smita added
+        #Smita added for further execution based on message topic received on publish
 
         item = {"topic": msg.topic, "payload": msg.payload}
-        if item["topic"]=="device/"+self._device_type+"/REGISTER_ACK":
+        if item["topic"]=="device/"+self._device_id+"/REGISTER_ACK":
             s = str(item["payload"].decode("utf-8"))
             dict = json.loads(s)
-            print(self._device_id+" Received a messsage on topic " + item["topic"]+" saying "+dict['ack_message'])
+            print(self._device_id+" Received a message on topic " + item["topic"]+" saying "+dict['ack_message'])
             print()
 
         elif item["topic"] =="device/"+self._device_id+"/STATUS":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self.get_consolidated_status(item)
         elif item["topic"] =="device/"+self._room_type+"/STATUS":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self.get_consolidated_status(item)
 
         elif item["topic"] =="device/"+self._device_type+"/STATUS":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self.get_consolidated_status(item)
 
         elif item["topic"] =="device/"+self._device_id+"/SWITCH":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self._set_switch_status(item)
 
         elif item["topic"] =="device/"+self._room_type+"/SWITCH":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self._set_switch_status(item)
 
         elif item["topic"] =="device/"+self._device_type+"/SWITCH":
-            print("\n"+self._device_id+" Received a messsage on topic " + item["topic"])
+            print("\n"+self._device_id+" Received a message on topic " + item["topic"])
             self._set_switch_status(item)
 
 
@@ -123,7 +123,40 @@ class Light_Device():
         s = str(item["payload"].decode("utf-8"))
         dict = json.loads(s)
         print("\nCommand is "+dict['command'] )
-        self._switch_status=dict['command']
+
+        try:
+            self._switch_status=dict['command']
+
+            # Smita Call to Edge server to acknowledge SWITCH COMMAND ON/OFF
+            topic = "device/ACKSWITCH"
+            # Initialize a dictionary to be sent as publish message
+            message = {}
+
+            # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+            message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['switch_status'] = self._switch_status
+            message['device_type'] = self._device_type
+            message['device_id'] = self._device_id
+            message['light_intensity'] = self._light_intensity
+            message['command'] =dict['command']
+            message['ack_message'] = "Successfull"
+
+            # Publish the message
+            print("\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation success acknowledgement to edge server")
+            self.client.publish(topic, json.dumps(message))
+
+        except Exception:
+            message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['ack_message'] = "Not Successfull"
+            message['device_id'] = self._device_id
+            message['command'] = dict['command']
+
+            # Publish the message
+            print(
+                "\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation failure acknowledgement to edge server")
+            self.client.publish(topic, json.dumps(message))
+
+
 
 
     # Getting the light intensity for the devices
@@ -143,12 +176,7 @@ class Light_Device():
     def get_consolidated_status(self,item):
 
         #Smita Call to Edge server to register device
-        device = {}
-        device['device_id'] = self._device_id
-        device['switch_status'] = self._switch_status
-        device['light_intensity'] = self._light_intensity
-        device['publish_topic'] = "device/ACKSTATUS"
-
+        topic = "device/ACKSTATUS"
         # Initialize a dictionary to be sent as publish message
         message = {}
 
@@ -156,11 +184,12 @@ class Light_Device():
         message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         message['switch_status'] = self._switch_status
         message['device_type'] = self._device_type
+        message['device_id'] = self._device_id
         message['light_intensity'] = self._light_intensity
 
         # Publish the message
         print("\nPublished by " + self._device_id + " to topic device/ACKSTATUS to send device status to edge server")
-        self.client.publish(device["publish_topic"], json.dumps(message))
+        self.client.publish(topic, json.dumps(message))
 
 
 

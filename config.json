@@ -7,7 +7,7 @@
             "publish_frequency": 5,
             "publish_topic": "devices/LIGHT",
             "std_val": 25,
-            "device_count": 1
+            "device_count": 3
         }
     ]
 }
