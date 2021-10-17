@@ -4,10 +4,11 @@
     "devices": [
         {
             "type": "LIGHT",
-            "publish_frequency": 5,
-            "publish_topic": "devices/LIGHT",
-            "std_val": 25,
             "device_count": 3
+        },
+        {
+            "type": "AC",
+            "device_count": 2
         }
     ]
 }

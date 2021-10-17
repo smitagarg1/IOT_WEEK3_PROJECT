@@ -33,7 +33,7 @@ class Edge_Server:
     def _on_connect(self, client, userdata, flags, result_code):
         print("Connected with result code " + str(result_code))
         print()
-        client.subscribe([("device/REGISTER",0),("device/ACKSTATUS",0),("device/ACKSWITCH",0)])
+        client.subscribe([("device/REGISTER",0),("device/ACKSTATUS",0),("device/ACKSWITCH",0),("device/ACKLIGHTINTENSITY",0),("device/ACKTEMPERATURE",0)])
 
     # method to process the recieved messages and publish them on relevant topics 
     # this method can also be used to take the action based on received commands
@@ -49,10 +49,26 @@ class Edge_Server:
         elif item['topic'] == "device/ACKSWITCH":
             s = str(item['payload'].decode("utf-8"))
             dict = json.loads(s)
-            if dict['ack_message'] =="Successfull":
+            if dict['ack_message'] =="Successful":
                 print("Device "+dict['device_id']+" successfully Switched "+dict['command'])
-            elif dict['ack_message'] =="Not Successfull":
+            elif dict['ack_message'] =="Not Successful":
                 print("There was problem switching "+dict['device_id']+" "+dict['command'])
+
+        elif item['topic'] == "device/ACKLIGHTINTENSITY":
+            s = str(item['payload'].decode("utf-8"))
+            dict = json.loads(s)
+            if dict['ack_message'] =="Successful":
+                print("Device "+dict['device_id']+" successfully Light intensity set to  "+dict['LIGHT_INTENSITY'])
+            elif dict['ack_message'] =="Not Successful":
+                print("There was problem setting light intensity of "+dict['device_id']+" to "+dict['LIGHT_INTENSITY'])
+
+        elif item['topic'] == "device/ACKTEMPERATURE":
+            s = str(item['payload'].decode("utf-8"))
+            dict = json.loads(s)
+            if dict['ack_message'] =="Successful":
+                print("Device "+dict['device_id']+" successfully temperature  set to  "+dict['TEMPERATURE'])
+            elif dict['ack_message'] =="Not Successful":
+                print("There was problem setting temperature set to  "+dict['device_id']+" to "+dict['TEMPERATURE'])
 
 
     # Returning the current registered list
@@ -105,7 +121,7 @@ class Edge_Server:
         message["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # Publish the message
-        self.client.publish(device["publish_topic"], json.dumps(message))
+        self.client.publish(topic, json.dumps(message))
         print("Published to " + topic + " to get status of devices on basis of " + key)
 
     # Sending Switch on and off for the connected devices
@@ -119,7 +135,7 @@ class Edge_Server:
         message['command'] = command
 
         # Publish the message
-        print("Published to " + topic + " to switch device to " + command + " on basis of " + key)
+        print("Published to " + topic + " to switch device to '" + command + "' on basis of " + key)
         self.client.publish(topic, json.dumps(message))
 
 
@@ -130,7 +146,6 @@ class Edge_Server:
         dict = json.loads(s)
 
         self._device_status.append(dict)
-        time.sleep(10)
 
 
     #Smita added
@@ -145,8 +160,33 @@ class Edge_Server:
 
     # Controlling and performing the operations on the devices
     # based on the request received
-    def set(self):
-        pass
+    def set(self,key, value,controldict):
+        if controldict['commandkey'] == "LIGHT_INTENSITY":
+            topic="device/" + value + "/LIGHTINTENSITY"
+
+            message = {}
+            # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+            message["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['LIGHT_INTENSITY'] = controldict['commandvalue']
+
+            # Publish the message
+            print("Published to " + topic + " change light intensity to " + controldict['commandvalue'] + " on basis of " + key)
+            self.client.publish(topic, json.dumps(message))
+
+        elif controldict['commandkey'] == "TEMPERATURE":
+            topic="device/" + value + "/TEMPERATURE"
+
+            message = {}
+            # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+            message["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['TEMPERATURE'] = controldict['commandvalue']
+
+            # Publish the message
+            print("Published to " + topic + " change temperature to " + controldict[
+                'commandvalue'] + " on basis of " + key)
+            self.client.publish(topic, json.dumps(message))
+
+
 
     def _on_disconnect(client, userdata, result_code):
         print("Disconnected with result code " + str(result_code))
