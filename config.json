@@ -7,14 +7,7 @@
             "publish_frequency": 5,
             "publish_topic": "devices/LIGHT",
             "std_val": 25,
-            "device_count": 3
-        },
-        {
-            "type": "AC",
-            "publish_frequency": 10,
-            "publish_topic": "devices/AC",
-            "std_val": 40,
-            "device_count": 2
+            "device_count": 1
         }
     ]
 }

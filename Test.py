@@ -29,7 +29,7 @@ print("Intitate the device creation and registration process.")
 
 
 print("\nCreating the Light devices for their respective rooms.")
-rooms_light = ["Kitchen", "BR1", "BR2", "Living"]
+rooms_light = ["KITCHEN", "BR1", "BR2", "Living"]
 device_config = []
 for devices in config['devices']:
     if devices['type'] == 'LIGHT':
@@ -46,25 +46,9 @@ for devices in config['devices']:
 
 
 
-# Creating the ac_device  
-print("\nCreating the AC devices for their respective rooms. ")
-rooms_ac = ["BR1", "BR2", "Living"]
-
-for devices in config['devices']:
-    if devices['type'] == 'AC':
-        for n in range(devices['device_count']):
-            device_id = devices['type'] + "_" + str(n)
-            device_type = devices['type']
-            publish_frequency = devices['publish_frequency']
-            std_val = devices['std_val']
-            #publish_topic = devices['publish_topic']
-
-            ac_device_1 = AC_Device(device_id,device_type, rooms_ac.pop(0), host, port)
-            time.sleep(WAIT_TIME)
-
-
 
 
 edge_server_1.get_status("device_id","LIGHT_0")
+device_status=edge_server_1.get_device_status_list()
 #print("\nSmart Home Simulation stopped.")
 #edge_server_1.terminate()
