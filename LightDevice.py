@@ -63,11 +63,18 @@ class Light_Device():
         topic_room_type = "device/" + self._room_type + "/STATUS"
         topic_device_type = "device/" + self._device_type + "/STATUS"
 
+        topic_deviceid_switch = "device/" + self._device_id + "/SWITCH"
+        topic_room_type_switch = "device/" + self._room_type + "/SWITCH"
+        topic_device_type_switch = "device/" + self._device_type + "/SWITCH"
+
         print("Light Device "+self._device_id+" subscribing to following topics" )
         print(self._device_id+"::"+topic_register_ack+" : Topic for registration acknowledgement from edge server")
         print(self._device_id+"::"+topic_deviceid+" : Topic for getting status on basis of device_id")
         print(self._device_id+"::"+topic_room_type+" : Topic for getting status on basis of room_type")
         print(self._device_id+"::"+topic_device_type+" : Topic for getting status on basis of device_type")
+        print(self._device_id + "::" + topic_deviceid_switch + " : Topic for switching on and off on basis of device_id")
+        print(self._device_id + "::" + topic_room_type_switch + " : Topic for switching on and off on basis of room_type")
+        print(self._device_id + "::" + topic_device_type_switch + " : Topic for switching on and off on basis of device_type")
 
         client.subscribe([(topic_deviceid, 1),(topic_register_ack, 0), (topic_room_type, 0), (topic_device_type, 0)])
 
@@ -94,6 +101,18 @@ class Light_Device():
             print(self._device_id+" Received a messsage on topic " + item["topic"])
             self.get_consolidated_status(item)
 
+        elif item["topic"] =="device/"+self._device_id+"/SWITCH":
+            print(self._device_id+" Received a messsage on topic " + item["topic"])
+            self._set_switch_status(item)
+
+        elif item["topic"] =="device/"+self._room_type+"/SWITCH":
+            print(self._device_id+" Received a messsage on topic " + item["topic"])
+            self._set_switch_status(item)
+
+        elif item["topic"] =="device/"+self._device_type+"/SWITCH":
+            print(self._device_id+" Received a messsage on topic " + item["topic"])
+            self._set_switch_status(item)
+
 
 
     # Getting the current switch status of devices
@@ -101,7 +120,8 @@ class Light_Device():
         return self._get_switch_status()
 
     # Setting the the switch of devices
-    def _set_switch_status(self, switch_state):
+    def _set_switch_status(self, item):
+
         self._switch_status=switch_state
 
     # Getting the light intensity for the devices

@@ -6,7 +6,7 @@ from EdgeServer import Edge_Server
 from LightDevice import Light_Device
 from ACDevice import AC_Device
 
-WAIT_TIME = 0.25
+WAIT_TIME = 7
 
 print("\nSmart Home Simulation started.")
 # Creating the edge-server for the communication with the user
@@ -41,14 +41,21 @@ for devices in config['devices']:
             #publish_topic = devices['publish_topic']
 
             light_device_1 = Light_Device(device_id,device_type, rooms_light.pop(0), host, port)
-            time.sleep(WAIT_TIME)
 
 
+time.sleep(7)
 
 
 
 
 edge_server_1.get_status("device_id","LIGHT_0")
+time.sleep(10)
 device_status=edge_server_1.get_device_status_list()
+print(device_status)
 #print("\nSmart Home Simulation stopped.")
 #edge_server_1.terminate()
+
+
+
+
+time.sleep(10)

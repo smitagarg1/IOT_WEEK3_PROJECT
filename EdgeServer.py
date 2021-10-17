@@ -103,6 +103,22 @@ class Edge_Server:
         self.client.publish(device["publish_topic"], json.dumps(message))
         print("Published to " + topic + " to get status of devices on basis of " + key)
 
+    # Sending Switch on and off for the connected devices
+    def switch_command(self, key, value,command):
+        # Smita publish
+        device = {}
+        topic = "device/" + value + "/SWITCH"
+        device['publish_topic'] = topic
+        device['command'] = command
+
+        message = {}
+        # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+        message["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        message['command'] = command
+
+        # Publish the message
+        self.client.publish(device["publish_topic"], json.dumps(message))
+        print("Published to " + topic + " to get status of devices on basis of " + key)
 
 
     #Smita added
