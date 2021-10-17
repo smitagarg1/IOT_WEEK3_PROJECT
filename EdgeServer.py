@@ -33,7 +33,7 @@ class Edge_Server:
     def _on_connect(self, client, userdata, flags, result_code):
         print("Connected with result code " + str(result_code))
         print()
-        client.subscribe([("device/REGISTER",0),("device/ACKSTATUS",0)])
+        client.subscribe([("device/REGISTER",0),("device/ACKSTATUS",0),("device/ACKSWITCH",0)])
 
     # method to process the recieved messages and publish them on relevant topics 
     # this method can also be used to take the action based on received commands
@@ -45,6 +45,9 @@ class Edge_Server:
             print("Received by Edge Server a messsage on topic " + item['topic'] + " to register following device")
             self.set_registered_device_list(item)
         elif item['topic'] == "device/ACKSTATUS":
+            self.receive_status(item)
+
+        elif item['topic'] == "device/ACKSWITCH":
             self.receive_status(item)
 
 
@@ -117,8 +120,9 @@ class Edge_Server:
         message['command'] = command
 
         # Publish the message
+        print("Published to " + topic + " to switch device to " + command + " on basis of " + key)
         self.client.publish(device["publish_topic"], json.dumps(message))
-        print("Published to " + topic + " to get status of devices on basis of " + key)
+
 
 
     #Smita added
@@ -132,6 +136,10 @@ class Edge_Server:
     #Smita added
     def get_device_status_list(self):
         return self._device_status
+
+    # Smita added
+    def clear_device_status_list(self):
+        return self._device_status.clear()
 
 
 

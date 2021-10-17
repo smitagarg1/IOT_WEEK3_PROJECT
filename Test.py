@@ -42,20 +42,35 @@ for devices in config['devices']:
 
             light_device_1 = Light_Device(device_id,device_type, rooms_light.pop(0), host, port)
 
-
+print("Wait for 7 secs...............")
 time.sleep(7)
 
 
 
-
+edge_server_1.clear_device_status_list()
 edge_server_1.get_status("device_id","LIGHT_0")
+print("Wait for 10 secs...............")
 time.sleep(10)
 device_status=edge_server_1.get_device_status_list()
+print("Printing consolidated status of all devices")
 print(device_status)
 #print("\nSmart Home Simulation stopped.")
 #edge_server_1.terminate()
 
 
 
-
+print("Wait for 10 secs...............")
 time.sleep(10)
+
+
+
+edge_server_1.switch_command("device_id","LIGHT_0","ON")
+print("Wait for 10 secs...............")
+time.sleep(20)
+edge_server_1.clear_device_status_list()
+edge_server_1.get_status("device_id","LIGHT_0")
+print("Wait for 10 secs...............")
+time.sleep(10)
+device_status=edge_server_1.get_device_status_list()
+print("Printing consolidated status of all devices")
+print(device_status)

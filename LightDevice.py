@@ -76,7 +76,7 @@ class Light_Device():
         print(self._device_id + "::" + topic_room_type_switch + " : Topic for switching on and off on basis of room_type")
         print(self._device_id + "::" + topic_device_type_switch + " : Topic for switching on and off on basis of device_type")
 
-        client.subscribe([(topic_deviceid, 1),(topic_register_ack, 0), (topic_room_type, 0), (topic_device_type, 0)])
+        client.subscribe([(topic_deviceid, 1),(topic_register_ack, 0), (topic_room_type, 0), (topic_device_type, 0),(topic_deviceid_switch,0)])
 
     # method to process the recieved messages and publish them on relevant topics 
     # this method can also be used to take the action based on received commands
@@ -121,8 +121,12 @@ class Light_Device():
 
     # Setting the the switch of devices
     def _set_switch_status(self, item):
+        print("Inside switch status")
+        s = str(item["payload"].decode("utf-8"))
+        dict = json.loads(s)
+        print("Command is "+dict['command'] )
+        self._switch_status=dict['command']
 
-        self._switch_status=switch_state
 
     # Getting the light intensity for the devices
     def _get_light_intensity(self):
@@ -152,9 +156,9 @@ class Light_Device():
 
         # Generate timestamp in YYYY-MM-DD HH:MM:SS format
         message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        message['switch_status'] = self._device_id
-        message['device_type'] = self._switch_status
-        message['room_type'] = self._light_intensity
+        message['switch_status'] = self._switch_status
+        message['device_type'] = self._device_type
+        message['light_intensity'] = self._light_intensity
 
         # Publish the message
         print()
