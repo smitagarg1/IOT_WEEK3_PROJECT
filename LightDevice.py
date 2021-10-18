@@ -44,8 +44,9 @@ class Light_Device():
         message["room_type"] = room_type
 
         # Publish the message
-     
-        print("\nPublished by " + self._device_id + " to topic device/REGISTER to register on edge server")
+
+        print("\n######################Published by " + self._device_id + " to topic device/REGISTER to register on edge server##########################")
+        print()
         self.client.publish(topic, json.dumps(message))
 
     # Connect method to subscribe to various topics. 
@@ -75,7 +76,7 @@ class Light_Device():
         topic_all_intensity = "device/ALL/LIGHTINTENSITY"
 
 
-        print("\nLight Device "+self._device_id+" subscribing to following topics" )
+        print("\nLight Device "+self._device_id+" subscribing to following topics:::::::::::::" )
         print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_register_ack+" :::: Topic for registration acknowledgement from edge server")
         print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_deviceid+"  :::: Topic for getting status on basis of device_id")
         print("Device id =>"+self._device_id+":::::Topic Subscribed=>"+topic_room_type+"  :::: Topic for getting status on basis of room_type")
@@ -193,8 +194,7 @@ class Light_Device():
             message['command'] = dict['command']
 
             # Publish the message
-            print(
-                "\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation failure acknowledgement to edge server")
+            print("\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation failure acknowledgement to edge server")
             self.client.publish(topic, json.dumps(message))
 
 

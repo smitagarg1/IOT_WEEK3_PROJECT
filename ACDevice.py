@@ -42,8 +42,9 @@ class AC_Device():
         message["room_type"] = room_type
 
         # Publish the message
-
-        print("\nPublished by " + self._device_id + " to topic device/REGISTER to register on edge server")
+        print("\n")
+        print("\n######################Published by " + self._device_id + " to topic device/REGISTER to register on edge server##########################")
+        print("\n")
         self.client.publish(topic, json.dumps(message))
 
     # Connect method to subscribe to various topics. 
@@ -72,7 +73,7 @@ class AC_Device():
         topic_device_type_temp = "device/" + self._device_type + "/TEMPERATURE"
         topic_all_temp = "device/ALL/TEMPERATURE"
 
-        print("\nAC Device " + self._device_id + " subscribing to following topics")
+        print("\nAC Device " + self._device_id + " subscribing to following topics:::::::::::::")
         print("Device id =>" + self._device_id + ":::::Topic Subscribed=>" + topic_register_ack + " :::: Topic for registration acknowledgement from edge server")
         print("Device id =>" + self._device_id + ":::::Topic Subscribed=>" + topic_deviceid + "  :::: Topic for getting status on basis of device_id")
         print("Device id =>" + self._device_id + ":::::Topic Subscribed=>" + topic_room_type + "  :::: Topic for getting status on basis of room_type")
