@@ -156,47 +156,44 @@ class AC_Device():
     def _get_switch_status(self):
         return self._get_switch_status()
 
+
     # Setting the the switch of devices
-    def _set_switch_status(self, switch_state):
-        # Setting the the switch of devices
-        def _set_switch_status(self, item):
-            print("\nInside switch status for " + self._device_id)
-            s = str(item["payload"].decode("utf-8"))
-            dict = json.loads(s)
-            print("\nCommand is " + dict['command'])
+    def _set_switch_status(self, item):
+        print("\nInside switch status for " + self._device_id)
+        s = str(item["payload"].decode("utf-8"))
+        dict = json.loads(s)
+        print("\nCommand is " + dict['command'])
 
-            try:
-                self._switch_status = dict['command']
+        try:
+            self._switch_status = dict['command']
 
-                # Smita Call to Edge server to acknowledge SWITCH COMMAND ON/OFF
-                topic = "device/ACKSWITCH"
-                # Initialize a dictionary to be sent as publish message
-                message = {}
+            # Smita Call to Edge server to acknowledge SWITCH COMMAND ON/OFF
+            topic = "device/ACKSWITCH"
+            # Initialize a dictionary to be sent as publish message
+            message = {}
 
-                # Generate timestamp in YYYY-MM-DD HH:MM:SS format
-                message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                message['switch_status'] = self._switch_status
-                message['device_type'] = self._device_type
-                message['device_id'] = self._device_id
-                message['temperature'] = self._temperature
-                message['command'] = dict['command']
-                message['ack_message'] = "Successfull"
+            # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+            message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['switch_status'] = self._switch_status
+            message['device_type'] = self._device_type
+            message['device_id'] = self._device_id
+            message['temperature'] = self._temperature
+            message['command'] = dict['command']
+            message['ack_message'] = "Successful"
 
-                # Publish the message
-                print(
-                    "\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation success acknowledgement to edge server")
-                self.client.publish(topic, json.dumps(message))
+            # Publish the message
+            print("\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation success acknowledgement to edge server")
+            self.client.publish(topic, json.dumps(message))
 
-            except Exception:
-                message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                message['ack_message'] = "Not Successfull"
-                message['device_id'] = self._device_id
-                message['command'] = dict['command']
+        except Exception:
+            message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            message['ack_message'] = "Not Successful"
+            message['device_id'] = self._device_id
+            message['command'] = dict['command']
 
-                # Publish the message
-                print(
-                    "\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation failure acknowledgement to edge server")
-                self.client.publish(topic, json.dumps(message))
+            # Publish the message
+            print("\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation failure acknowledgement to edge server")
+            self.client.publish(topic, json.dumps(message))
 
     # Getting the temperature for the devices
     def _get_temperature(self):
@@ -256,6 +253,7 @@ class AC_Device():
         message['switch_status'] = self._switch_status
         message['device_type'] = self._device_type
         message['device_id'] = self._device_id
+        message['room_type'] = self._room_type
         message['temperature'] = self._temperature
 
         # Publish the message

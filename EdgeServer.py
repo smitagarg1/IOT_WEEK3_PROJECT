@@ -41,7 +41,7 @@ class Edge_Server:
         item={"topic":msg.topic, "payload":msg.payload}
 
         if item['topic'] == "device/REGISTER":
-            print("\nReceived by Edge Server a messsage on topic " + item['topic'] + " to register following device")
+            print("\nReceived by Edge Server a message on topic " + item['topic'] + " to register following device")
             self.set_registered_device_list(item)
         elif item['topic'] == "device/ACKSTATUS":
             self.receive_status(item)
@@ -50,24 +50,30 @@ class Edge_Server:
             s = str(item['payload'].decode("utf-8"))
             dict = json.loads(s)
             if dict['ack_message'] =="Successful":
+                print("\nReceived following message on Edge server on topic "+item['topic'])
                 print("Device "+dict['device_id']+" successfully Switched "+dict['command'])
             elif dict['ack_message'] =="Not Successful":
+                print("\nReceived following message on Edge server on topic " + item['topic'])
                 print("There was problem switching "+dict['device_id']+" "+dict['command'])
 
         elif item['topic'] == "device/ACKLIGHTINTENSITY":
             s = str(item['payload'].decode("utf-8"))
             dict = json.loads(s)
             if dict['ack_message'] =="Successful":
-                print("Device "+dict['device_id']+" successfully Light intensity set to  "+dict['LIGHT_INTENSITY'])
+                print("Received following message on Edge server on topic " + item['topic'])
+                print("Received message on Edge server::Device "+dict['device_id']+" successfully Light intensity set to  "+dict['LIGHT_INTENSITY'])
             elif dict['ack_message'] =="Not Successful":
+                print("Received following message on Edge server on topic " + item['topic'])
                 print("There was problem setting light intensity of "+dict['device_id']+" to "+dict['LIGHT_INTENSITY'])
 
         elif item['topic'] == "device/ACKTEMPERATURE":
             s = str(item['payload'].decode("utf-8"))
             dict = json.loads(s)
             if dict['ack_message'] =="Successful":
+                print("Received following message on Edge server on topic " + item['topic'])
                 print("Device "+dict['device_id']+" successfully temperature  set to  "+dict['TEMPERATURE'])
             elif dict['ack_message'] =="Not Successful":
+                print("Received following message on Edge server on topic " + item['topic'])
                 print("There was problem setting temperature set to  "+dict['device_id']+" to "+dict['TEMPERATURE'])
 
 

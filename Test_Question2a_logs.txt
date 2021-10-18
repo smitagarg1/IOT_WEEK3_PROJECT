@@ -1,0 +1,251 @@
+C:\Users\smita\AppData\Local\Programs\Python\Python39\python.exe C:/Users/smita/IIT_MADRAS_COURSE/Assignment3_Iot/C03-Project-01-Simple-Smart-Home/Test_Question2a.py
+
+Smart Home Simulation started.
+Connected with result code 0
+
+Initiate the device creation and registration process.
+----------------------------Question 1 Creating the Light and AC devices for their respective rooms.--------------------------------------------------
+
+
+
+######################Published by LIGHT_0 to topic device/REGISTER to register on edge server##########################
+
+
+Connected with result code 0
+
+Light Device LIGHT_0 subscribing to following topics:::::::::::::
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT_0/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT_0/STATUS  :::: Topic for getting status on basis of device_id
+Device id =>LIGHT_0:::::Topic Subscribed=>device/KITCHEN/STATUS  :::: Topic for getting status on basis of room_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT/STATUS  :::: Topic for getting status on basis of device_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT_0/SWITCH  :::: Topic for switching on and off on basis of device_id
+Device id =>LIGHT_0:::::Topic Subscribed=>device/KITCHEN/SWITCH  :::: Topic for switching on and off on basis of room_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT/SWITCH  :::: Topic for switching on and off on basis of device_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT_0/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_id
+Device id =>LIGHT_0:::::Topic Subscribed=>device/KITCHEN/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of room_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_type
+Device id =>LIGHT_0:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
+
+Received by Edge Server a messsage on topic device/REGISTER to register following device
+{'device_id': 'LIGHT_0', 'device': {'timestamp': '2021-10-18 11:46:45', 'device_id': 'LIGHT_0', 'device_type': 'LIGHT', 'room_type': 'KITCHEN'}}
+
+Published by Edge Server to topic device/LIGHT_0/REGISTER_ACK to acknowledge successfull device registration
+No of registered device now 1
+
+LIGHT_0 Received a message on topic device/LIGHT_0/REGISTER_ACK saying LIGHT_0 registered successfully
+
+######################Published by LIGHT_1 to topic device/REGISTER to register on edge server##########################
+
+
+Connected with result code 0
+
+Light Device LIGHT_1 subscribing to following topics:::::::::::::
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/STATUS  :::: Topic for getting status on basis of device_id
+Device id =>LIGHT_1:::::Topic Subscribed=>device/BR1/STATUS  :::: Topic for getting status on basis of room_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT/STATUS  :::: Topic for getting status on basis of device_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/SWITCH  :::: Topic for switching on and off on basis of device_id
+Device id =>LIGHT_1:::::Topic Subscribed=>device/BR1/SWITCH  :::: Topic for switching on and off on basis of room_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT/SWITCH  :::: Topic for switching on and off on basis of device_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_id
+Device id =>LIGHT_1:::::Topic Subscribed=>device/BR1/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of room_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_type
+Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
+
+Received by Edge Server a messsage on topic device/REGISTER to register following device
+{'device_id': 'LIGHT_1', 'device': {'timestamp': '2021-10-18 11:46:45', 'device_id': 'LIGHT_1', 'device_type': 'LIGHT', 'room_type': 'BR1'}}
+
+Published by Edge Server to topic device/LIGHT_1/REGISTER_ACK to acknowledge successfull device registration
+No of registered device now 2
+
+LIGHT_1 Received a message on topic device/LIGHT_1/REGISTER_ACK saying LIGHT_1 registered successfully
+
+######################Published by LIGHT_2 to topic device/REGISTER to register on edge server##########################
+
+
+Connected with result code 0
+
+Light Device LIGHT_2 subscribing to following topics:::::::::::::
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/STATUS  :::: Topic for getting status on basis of device_id
+Device id =>LIGHT_2:::::Topic Subscribed=>device/BR2/STATUS  :::: Topic for getting status on basis of room_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/STATUS  :::: Topic for getting status on basis of device_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/SWITCH  :::: Topic for switching on and off on basis of device_id
+Device id =>LIGHT_2:::::Topic Subscribed=>device/BR2/SWITCH  :::: Topic for switching on and off on basis of room_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/SWITCH  :::: Topic for switching on and off on basis of device_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_id
+Device id =>LIGHT_2:::::Topic Subscribed=>device/BR2/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of room_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_type
+Device id =>LIGHT_2:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
+
+Received by Edge Server a messsage on topic device/REGISTER to register following device
+{'device_id': 'LIGHT_2', 'device': {'timestamp': '2021-10-18 11:46:45', 'device_id': 'LIGHT_2', 'device_type': 'LIGHT', 'room_type': 'BR2'}}
+
+Published by Edge Server to topic device/LIGHT_2/REGISTER_ACK to acknowledge successfull device registration
+No of registered device now 3
+
+LIGHT_2 Received a message on topic device/LIGHT_2/REGISTER_ACK saying LIGHT_2 registered successfully
+
+
+
+######################Published by AC_0 to topic device/REGISTER to register on edge server##########################
+
+
+
+Connected with result code 0
+
+AC Device AC_0 subscribing to following topics:::::::::::::
+Device id =>AC_0:::::Topic Subscribed=>device/AC_0/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
+Device id =>AC_0:::::Topic Subscribed=>device/AC_0/STATUS  :::: Topic for getting status on basis of device_id
+Device id =>AC_0:::::Topic Subscribed=>device/BR1/STATUS  :::: Topic for getting status on basis of room_type
+Device id =>AC_0:::::Topic Subscribed=>device/AC/STATUS  :::: Topic for getting status on basis of device_type
+Device id =>AC_0:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
+Device id =>AC_0:::::Topic Subscribed=>device/AC_0/SWITCH  :::: Topic for switching on and off on basis of device_id
+Device id =>AC_0:::::Topic Subscribed=>device/BR1/SWITCH  :::: Topic for switching on and off on basis of room_type
+Device id =>AC_0:::::Topic Subscribed=>device/AC/SWITCH  :::: Topic for switching on and off on basis of device_type
+Device id =>AC_0:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
+Device id =>AC_0:::::Topic Subscribed=>device/AC_0/TEMPERATURE  :::: Topic for changing temperature on basis of device_id
+Device id =>AC_0:::::Topic Subscribed=>device/BR1/TEMPERATURE  :::: Topic for changing temperature on basis of room_type
+Device id =>AC_0:::::Topic Subscribed=>device/AC/TEMPERATURE  :::: Topic for changing temperature on basis of device_type
+Device id =>AC_0:::::Topic Subscribed=>device/ALL/TEMPERATURE  :::: Topic for for changing temperature for all devices in home
+
+Received by Edge Server a messsage on topic device/REGISTER to register following device
+{'device_id': 'AC_0', 'device': {'timestamp': '2021-10-18 11:46:45', 'device_id': 'AC_0', 'device_type': 'AC', 'room_type': 'BR1'}}
+
+Published by Edge Server to topic device/AC_0/REGISTER_ACK to acknowledge successfull device registration
+No of registered device now 4
+
+AC_0 Received a message on topic device/AC_0/REGISTER_ACK saying AC_0 registered successfully
+
+
+
+######################Published by AC_1 to topic device/REGISTER to register on edge server##########################
+
+
+
+Connected with result code 0
+
+AC Device AC_1 subscribing to following topics:::::::::::::
+Device id =>AC_1:::::Topic Subscribed=>device/AC_1/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
+Device id =>AC_1:::::Topic Subscribed=>device/AC_1/STATUS  :::: Topic for getting status on basis of device_id
+Device id =>AC_1:::::Topic Subscribed=>device/BR2/STATUS  :::: Topic for getting status on basis of room_type
+Device id =>AC_1:::::Topic Subscribed=>device/AC/STATUS  :::: Topic for getting status on basis of device_type
+Device id =>AC_1:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
+Device id =>AC_1:::::Topic Subscribed=>device/AC_1/SWITCH  :::: Topic for switching on and off on basis of device_id
+Device id =>AC_1:::::Topic Subscribed=>device/BR2/SWITCH  :::: Topic for switching on and off on basis of room_type
+Device id =>AC_1:::::Topic Subscribed=>device/AC/SWITCH  :::: Topic for switching on and off on basis of device_type
+Device id =>AC_1:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
+Device id =>AC_1:::::Topic Subscribed=>device/AC_1/TEMPERATURE  :::: Topic for changing temperature on basis of device_id
+Device id =>AC_1:::::Topic Subscribed=>device/BR2/TEMPERATURE  :::: Topic for changing temperature on basis of room_type
+Device id =>AC_1:::::Topic Subscribed=>device/AC/TEMPERATURE  :::: Topic for changing temperature on basis of device_type
+Device id =>AC_1:::::Topic Subscribed=>device/ALL/TEMPERATURE  :::: Topic for for changing temperature for all devices in home
+
+Received by Edge Server a messsage on topic device/REGISTER to register following device
+{'device_id': 'AC_1', 'device': {'timestamp': '2021-10-18 11:46:45', 'device_id': 'AC_1', 'device_type': 'AC', 'room_type': 'BR2'}}
+
+Published by Edge Server to topic device/AC_1/REGISTER_ACK to acknowledge successfull device registration
+No of registered device now 5
+
+AC_1 Received a message on topic device/AC_1/REGISTER_ACK saying AC_1 registered successfully
+
+
+...........Wait for 15 secs...................................................................................................
+
+######################Question 2a getting status on basis of device_id,device_type,room_type or ALL.############################################
+
+######Getting status on basis of device_id LIGHT_0##################################################################
+Published to device/LIGHT_0/STATUS to get status of devices on basis of device_id
+
+...........Wait for 10 secs...................................................................................................
+
+LIGHT_0 Received a message on topic device/LIGHT_0/STATUS
+Inside consolidated_status for LIGHT_0
+
+Published by LIGHT_0 to topic device/ACKSTATUS to send device status to edge server
+
+######Printing consolidated status of LIGHT device_id requested
+[{'timestamp': '2021-10-18 11:47:00', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_0', 'room_type': 'KITCHEN', 'light_intensity': 'LOW'}]
+
+######Getting status on basis of device_type LIGHT##################################################################
+Published to device/LIGHT/STATUS to get status of devices on basis of device_type
+
+...........Wait for 10 secs...................................................................................................
+
+LIGHT_1 Received a message on topic device/LIGHT/STATUS
+Inside consolidated_status for LIGHT_1
+
+Published by LIGHT_1 to topic device/ACKSTATUS to send device status to edge server
+
+LIGHT_2 Received a message on topic device/LIGHT/STATUS
+Inside consolidated_status for LIGHT_2
+
+Published by LIGHT_2 to topic device/ACKSTATUS to send device status to edge server
+LIGHT_0 Received a message on topic device/LIGHT/STATUS
+
+Inside consolidated_status for LIGHT_0
+
+Published by LIGHT_0 to topic device/ACKSTATUS to send device status to edge server
+
+######Printing consolidated status of all LIGHT devices
+[{'timestamp': '2021-10-18 11:47:10', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_1', 'room_type': 'BR1', 'light_intensity': 'LOW'}, {'timestamp': '2021-10-18 11:47:10', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_2', 'room_type': 'BR2', 'light_intensity': 'LOW'}, {'timestamp': '2021-10-18 11:47:10', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_0', 'room_type': 'KITCHEN', 'light_intensity': 'LOW'}]
+
+######Getting status on basis of room_type BR1##################################################################
+Published to device/BR1/STATUS to get status of devices on basis of room_type
+
+...........Wait for 10 secs...................................................................................................
+
+LIGHT_1 Received a message on topic device/BR1/STATUS
+Inside consolidated_status for LIGHT_1
+
+Published by LIGHT_1 to topic device/ACKSTATUS to send device status to edge server
+
+AC_0 Received a message on topic device/BR1/STATUS
+Inside consolidated_status for AC_0
+
+Published by AC_0 to topic device/ACKSTATUS to send device status to edge server
+
+######Printing consolidated status of all devices in room BR1
+[{'timestamp': '2021-10-18 11:47:20', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_1', 'room_type': 'BR1', 'light_intensity': 'LOW'}, {'timestamp': '2021-10-18 11:47:20', 'switch_status': 'OFF', 'device_type': 'AC', 'device_id': 'AC_0', 'room_type': 'BR1', 'temperature': 22}]
+
+######Getting status of ALL devices in home##################################################################
+Published to device/ALL/STATUS to get status of devices on basis of ALL
+
+...........Wait for 10 secs...................................................................................................
+
+LIGHT_1 Received a message on topic device/ALL/STATUS
+Inside consolidated_status for LIGHT_1
+
+LIGHT_0 Received a message on topic device/ALL/STATUS
+Inside consolidated_status for LIGHT_0
+
+Published by LIGHT_0 to topic device/ACKSTATUS to send device status to edge server
+
+LIGHT_2 Received a message on topic device/ALL/STATUS
+AC_1 Received a message on topic device/ALL/STATUS
+Inside consolidated_status for AC_1
+
+Published by AC_1 to topic device/ACKSTATUS to send device status to edge server
+
+Published by LIGHT_1 to topic device/ACKSTATUS to send device status to edge server
+
+Inside consolidated_status for LIGHT_2
+AC_0 Received a message on topic device/ALL/STATUS
+
+
+Published by LIGHT_2 to topic device/ACKSTATUS to send device status to edge server
+Inside consolidated_status for AC_0
+
+Published by AC_0 to topic device/ACKSTATUS to send device status to edge server
+
+######Printing consolidated status of ALL devices in home
+[{'timestamp': '2021-10-18 11:47:30', 'switch_status': 'OFF', 'device_type': 'AC', 'device_id': 'AC_1', 'room_type': 'BR2', 'temperature': 22}, {'timestamp': '2021-10-18 11:47:30', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_1', 'room_type': 'BR1', 'light_intensity': 'LOW'}, {'timestamp': '2021-10-18 11:47:30', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_0', 'room_type': 'KITCHEN', 'light_intensity': 'LOW'}, {'timestamp': '2021-10-18 11:47:30', 'switch_status': 'OFF', 'device_type': 'AC', 'device_id': 'AC_0', 'room_type': 'BR1', 'temperature': 22}, {'timestamp': '2021-10-18 11:47:30', 'switch_status': 'OFF', 'device_type': 'LIGHT', 'device_id': 'LIGHT_2', 'room_type': 'BR2', 'light_intensity': 'LOW'}]
+
+Smart Home Simulation stopped.
+
+Process finished with exit code 0

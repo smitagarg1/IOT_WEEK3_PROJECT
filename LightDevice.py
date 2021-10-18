@@ -181,7 +181,7 @@ class Light_Device():
             message['device_id'] = self._device_id
             message['light_intensity'] = self._light_intensity
             message['command'] =dict['command']
-            message['ack_message'] = "Successfull"
+            message['ack_message'] = "Successful"
 
             # Publish the message
             print("\nPublished by " + self._device_id + " to topic device/ACKSWITCH to send device SWITCH operation success acknowledgement to edge server")
@@ -189,7 +189,7 @@ class Light_Device():
 
         except Exception:
             message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            message['ack_message'] = "Not Successfull"
+            message['ack_message'] = "Not Successful"
             message['device_id'] = self._device_id
             message['command'] = dict['command']
 
@@ -258,6 +258,7 @@ class Light_Device():
         message['switch_status'] = self._switch_status
         message['device_type'] = self._device_type
         message['device_id'] = self._device_id
+        message['room_type'] = self._room_type
         message['light_intensity'] = self._light_intensity
 
         # Publish the message
