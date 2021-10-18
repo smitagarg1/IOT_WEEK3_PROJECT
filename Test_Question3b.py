@@ -55,10 +55,18 @@ print("\n...........Wait for 15 secs............................................
 
 print("\n######################Question 3b AC TEMPERATURE CONTROL COMMAND on basis of device_id,device_type,room_type or ALL.############################################")
 
-print("\n###### AC TEMPERATURE CONTROL on basis of device_id AC_0##################################################################")
+print("\n###### AC TEMPERATURE CONTROL on basis of device_id AC_0 SUCCESS CASE ##################################################################")
 dict={}
 dict['commandkey']="TEMPERATURE"
-dict['commandvalue']="23"
+dict['commandvalue']="22"
+edge_server_1.set("device_id","AC_0",dict)
+print("\n...........Wait for 10 secs...................................................................................................")
+time.sleep(10)
+
+print("\n###### AC TEMPERATURE CONTROL on basis of device_id AC_0 FAILURE CASE ##################################################################")
+dict={}
+dict['commandkey']="TEMPERATURE"
+dict['commandvalue']="17"
 edge_server_1.set("device_id","AC_0",dict)
 print("\n...........Wait for 10 secs...................................................................................................")
 time.sleep(10)

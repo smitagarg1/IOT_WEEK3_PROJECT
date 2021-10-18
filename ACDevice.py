@@ -206,24 +206,29 @@ class AC_Device():
         s = str(item["payload"].decode("utf-8"))
         dict = json.loads(s)
         print("Temperature commanded to set is " + dict['TEMPERATURE'])
-
+        topic = "device/ACKTEMPERATURE"
+        message = {}
         try:
-            self._temperature=dict['TEMPERATURE']
-            # Smita Call to Edge server to acknowledge TEMPERATURE COMMAND
-            topic = "device/ACKTEMPERATURE"
+            if 18 < int(dict['TEMPERATURE']) < 32:
+                self._temperature=dict['TEMPERATURE']
+                # Smita Call to Edge server to acknowledge TEMPERATURE COMMAND
 
-            # Initialize a dictionary to be sent as publish message
-            message = {}
 
-            # Generate timestamp in YYYY-MM-DD HH:MM:SS format
-            message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            message['TEMPERATURE']=self._temperature
-            message['device_id'] = self._device_id
-            message['ack_message'] = "Successful"
+                # Initialize a dictionary to be sent as publish message
 
-            # Publish the message
-            print("\nPublished by " + self._device_id + " to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server")
-            self.client.publish(topic, json.dumps(message))
+
+                # Generate timestamp in YYYY-MM-DD HH:MM:SS format
+                message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                message['TEMPERATURE']=self._temperature
+                message['device_id'] = self._device_id
+                message['ack_message'] = "Successful"
+
+                # Publish the message
+                print("\nPublished by " + self._device_id + " to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server")
+                self.client.publish(topic, json.dumps(message))
+            else:
+                print('Temperature provided is not between 18-32 degree')
+                raise Exception('Temperature provided is not between 18-32 degree')
 
         except Exception:
             message['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -232,7 +237,7 @@ class AC_Device():
             message['TEMPERATURE'] = dict['TEMPERATURE']
 
             # Publish the message
-            print("\nPublished by " + self._device_id + " to topic device/ACKTEMPERATURE to send device TEMPERATURE operation failure acknowledgement to edge server")
+            print("\nPublished by " + self._device_id + " to topic device/ACKTEMPERATURE for failure acknowledgement to edge server to set device TEMPERATURE")
             self.client.publish(topic, json.dumps(message))
 
 
