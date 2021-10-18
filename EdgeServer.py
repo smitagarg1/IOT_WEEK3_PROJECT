@@ -61,7 +61,7 @@ class Edge_Server:
             dict = json.loads(s)
             if dict['ack_message'] =="Successful":
                 print("Received following message on Edge server on topic " + item['topic'])
-                print("Received message on Edge server::Device "+dict['device_id']+" successfully Light intensity set to  "+dict['LIGHT_INTENSITY'])
+                print("Received message on Edge server::Device "+dict['device_id']+" Light intensity successfully set to  "+dict['LIGHT_INTENSITY'])
             elif dict['ack_message'] =="Not Successful":
                 print("Received following message on Edge server on topic " + item['topic'])
                 print("There was problem setting light intensity of "+dict['device_id']+" to "+dict['LIGHT_INTENSITY'])

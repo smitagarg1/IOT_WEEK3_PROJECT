@@ -94,6 +94,6 @@ print("\nPrinting consolidated status of all devices in home . ")
 print(device_status)
 
 
-
+time.sleep(10)
 print("\nSmart Home Simulation stopped.")
 edge_server_1.terminate()
