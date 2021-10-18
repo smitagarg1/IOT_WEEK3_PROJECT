@@ -49,13 +49,14 @@ for devices in config['devices']:
 
             ac_device_1 = AC_Device(device_id,device_type, rooms_ac.pop(0), host, port)
 
-
 time.sleep(10)
 
 
 
 
 
+print("\n\n\nALL devices registered at edge server are following ")
+print(edge_server_1.get_registered_device_list())
 
 print("\nSmart Home Simulation stopped.")
 edge_server_1.terminate()

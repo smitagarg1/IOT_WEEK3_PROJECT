@@ -71,7 +71,7 @@ class Edge_Server:
             dict = json.loads(s)
             if dict['ack_message'] =="Successful":
                 print("Received following message on Edge server on topic " + item['topic'])
-                print("Device "+dict['device_id']+" successfully temperature  set to  "+dict['TEMPERATURE'])
+                print("Device "+dict['device_id']+" temperature successfully set to  "+dict['TEMPERATURE'])
             elif dict['ack_message'] =="Not Successful":
                 print("Received following message on Edge server on topic " + item['topic'])
                 print("There was problem setting temperature set to  "+dict['device_id']+" to "+dict['TEMPERATURE'])

@@ -53,35 +53,35 @@ time.sleep(15)
 print()
 print("\n...........Wait for 15 secs...................................................................................................")
 
-print("\n######################Question 3a LIGHT INTENSITY COMMAND on basis of device_id,device_type,room_type or ALL.############################################")
+print("\n######################Question 3b AC TEMPERATURE CONTROL COMMAND on basis of device_id,device_type,room_type or ALL.############################################")
 
-print("\n######LIGHT INTENSITY COMMAND on basis of device_id LIGHT_0##################################################################")
+print("\n###### AC TEMPERATURE CONTROL on basis of device_id AC_0##################################################################")
 dict={}
-dict['commandkey']="LIGHT_INTENSITY"
-dict['commandvalue']="MEDIUM"
-edge_server_1.set("device_id","LIGHT_0",dict)
+dict['commandkey']="TEMPERATURE"
+dict['commandvalue']="23"
+edge_server_1.set("device_id","AC_0",dict)
 print("\n...........Wait for 10 secs...................................................................................................")
 time.sleep(10)
 
-print("\n######LIGHT INTENSITY COMMAND on basis of room_type BR1##################################################################")
+print("\n###### AC TEMPERATURE CONTROL on basis of room_type BR2##################################################################")
 dict={}
-dict['commandkey']="LIGHT_INTENSITY"
-dict['commandvalue']="MEDIUM"
-edge_server_1.set("room_type","BR1",dict)
+dict['commandkey']="TEMPERATURE"
+dict['commandvalue']="30"
+edge_server_1.set("room_type","BR2",dict)
 print("\n...........Wait for 10 secs...................................................................................................")
 time.sleep(10)
 
-print("\n######LIGHT INTENSITY COMMAND on basis of device_type LIGHT##################################################################")
+print("\n###### AC TEMPERATURE CONTROL on basis of device_type AC##################################################################")
 dict={}
-dict['commandkey']="LIGHT_INTENSITY"
-dict['commandvalue']="MEDIUM"
-edge_server_1.set("device_type","LIGHT",dict)
+dict['commandkey']="TEMPERATURE"
+dict['commandvalue']="20"
+edge_server_1.set("device_type","AC",dict)
 print("\n...........Wait for 10 secs...................................................................................................")
 time.sleep(10)
 
-print("\n\n#############Device status of ALL LIGHT devices after LIGHT INTENSITY COMMAND#################################################################")
+print("\n\n#############Device status of ALL AC devices after AC TEMPERATURE CONTROL #################################################################")
 edge_server_1.clear_device_status_list()
-edge_server_1.get_status("device_type","LIGHT")
+edge_server_1.get_status("device_type","AC")
 print("\nSleep for 10 sec..............................................................................................................")
 time.sleep(10)
 device_status=edge_server_1.get_device_status_list()
@@ -89,10 +89,10 @@ print("\nPrinting consolidated status of all devices in home . ")
 print(device_status)
 
 
-#print("\n######LIGHT INTENSITY COMMAND on basis of ALL##################################################################")
+#print("\n###### AC TEMPERATURE CONTROL on basis of ALL##################################################################")
 #dict={}
-#dict['commandkey']="LIGHT_INTENSITY"
-#dict['commandvalue']="HIGH"
+#dict['commandkey']="TEMPERATURE"
+#dict['commandvalue']="55"
 #edge_server_1.set("ALL","ALL",dict)
 #print("\n...........Wait for 10 secs...................................................................................................")
 

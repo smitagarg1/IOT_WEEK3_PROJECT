@@ -1,4 +1,4 @@
-C:\Users\smita\AppData\Local\Programs\Python\Python39\python.exe C:/Users/smita/IIT_MADRAS_COURSE/Assignment3_Iot/C03-Project-01-Simple-Smart-Home/Test_Question1.py
+C:\Users\smita\AppData\Local\Programs\Python\Python39\python.exe C:/Users/smita/IIT_MADRAS_COURSE/Assignment3_Iot/C03-Project-01-Simple-Smart-Home/Test_Question3b.py
 
 Smart Home Simulation started.
 Connected with result code 0
@@ -29,12 +29,15 @@ Device id =>LIGHT_0:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topi
 Device id =>LIGHT_0:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
 
 Received by Edge Server a message on topic device/REGISTER to register following device
-{'device_id': 'LIGHT_0', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_0', 'device_type': 'LIGHT', 'room_type': 'KITCHEN'}}
+{'device_id': 'LIGHT_0', 'device': {'timestamp': '2021-10-18 13:29:04', 'device_id': 'LIGHT_0', 'device_type': 'LIGHT', 'room_type': 'KITCHEN'}}
 
 Published by Edge Server to topic device/LIGHT_0/REGISTER_ACK to acknowledge successfull device registration
 No of registered device now 1
 
 LIGHT_0 Received a message on topic device/LIGHT_0/REGISTER_ACK saying LIGHT_0 registered successfully
+
+######################Published by LIGHT_1 to topic device/REGISTER to register on edge server##########################
+
 
 Connected with result code 0
 
@@ -47,9 +50,6 @@ Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for gett
 Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/SWITCH  :::: Topic for switching on and off on basis of device_id
 Device id =>LIGHT_1:::::Topic Subscribed=>device/BR1/SWITCH  :::: Topic for switching on and off on basis of room_type
 Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT/SWITCH  :::: Topic for switching on and off on basis of device_type
-
-######################Published by LIGHT_1 to topic device/REGISTER to register on edge server##########################
-
 Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/SWITCH  :::: Topic for switching on and off for all devices in home
 Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT_1/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of device_id
 Device id =>LIGHT_1:::::Topic Subscribed=>device/BR1/LIGHTINTENSITY  :::: Topic for changing light intensity on basis of room_type
@@ -57,14 +57,17 @@ Device id =>LIGHT_1:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topi
 Device id =>LIGHT_1:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
 
 Received by Edge Server a message on topic device/REGISTER to register following device
-{'device_id': 'LIGHT_1', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_1', 'device_type': 'LIGHT', 'room_type': 'BR1'}}
+{'device_id': 'LIGHT_1', 'device': {'timestamp': '2021-10-18 13:29:04', 'device_id': 'LIGHT_1', 'device_type': 'LIGHT', 'room_type': 'BR1'}}
 
 Published by Edge Server to topic device/LIGHT_1/REGISTER_ACK to acknowledge successfull device registration
 No of registered device now 2
 
 LIGHT_1 Received a message on topic device/LIGHT_1/REGISTER_ACK saying LIGHT_1 registered successfully
 
+######################Published by LIGHT_2 to topic device/REGISTER to register on edge server##########################
+
 Connected with result code 0
+
 
 Light Device LIGHT_2 subscribing to following topics:::::::::::::
 Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/REGISTER_ACK :::: Topic for registration acknowledgement from edge server
@@ -72,9 +75,6 @@ Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/STATUS  :::: Topic for 
 Device id =>LIGHT_2:::::Topic Subscribed=>device/BR2/STATUS  :::: Topic for getting status on basis of room_type
 Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/STATUS  :::: Topic for getting status on basis of device_type
 Device id =>LIGHT_2:::::Topic Subscribed=>device/ALL/STATUS  :::: Topic for getting status  for all devices in home
-
-######################Published by LIGHT_2 to topic device/REGISTER to register on edge server##########################
-
 Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT_2/SWITCH  :::: Topic for switching on and off on basis of device_id
 Device id =>LIGHT_2:::::Topic Subscribed=>device/BR2/SWITCH  :::: Topic for switching on and off on basis of room_type
 Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/SWITCH  :::: Topic for switching on and off on basis of device_type
@@ -85,7 +85,7 @@ Device id =>LIGHT_2:::::Topic Subscribed=>device/LIGHT/LIGHTINTENSITY  :::: Topi
 Device id =>LIGHT_2:::::Topic Subscribed=>device/ALL/LIGHTINTENSITY  :::: Topic for for changing light intensity for all devices in home
 
 Received by Edge Server a message on topic device/REGISTER to register following device
-{'device_id': 'LIGHT_2', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_2', 'device_type': 'LIGHT', 'room_type': 'BR2'}}
+{'device_id': 'LIGHT_2', 'device': {'timestamp': '2021-10-18 13:29:04', 'device_id': 'LIGHT_2', 'device_type': 'LIGHT', 'room_type': 'BR2'}}
 
 Published by Edge Server to topic device/LIGHT_2/REGISTER_ACK to acknowledge successfull device registration
 No of registered device now 3
@@ -116,7 +116,7 @@ Device id =>AC_0:::::Topic Subscribed=>device/AC/TEMPERATURE  :::: Topic for cha
 Device id =>AC_0:::::Topic Subscribed=>device/ALL/TEMPERATURE  :::: Topic for for changing temperature for all devices in home
 
 Received by Edge Server a message on topic device/REGISTER to register following device
-{'device_id': 'AC_0', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'AC_0', 'device_type': 'AC', 'room_type': 'BR1'}}
+{'device_id': 'AC_0', 'device': {'timestamp': '2021-10-18 13:29:04', 'device_id': 'AC_0', 'device_type': 'AC', 'room_type': 'BR1'}}
 
 Published by Edge Server to topic device/AC_0/REGISTER_ACK to acknowledge successfull device registration
 No of registered device now 4
@@ -147,7 +147,7 @@ Device id =>AC_1:::::Topic Subscribed=>device/AC/TEMPERATURE  :::: Topic for cha
 Device id =>AC_1:::::Topic Subscribed=>device/ALL/TEMPERATURE  :::: Topic for for changing temperature for all devices in home
 
 Received by Edge Server a message on topic device/REGISTER to register following device
-{'device_id': 'AC_1', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'AC_1', 'device_type': 'AC', 'room_type': 'BR2'}}
+{'device_id': 'AC_1', 'device': {'timestamp': '2021-10-18 13:29:04', 'device_id': 'AC_1', 'device_type': 'AC', 'room_type': 'BR2'}}
 
 Published by Edge Server to topic device/AC_1/REGISTER_ACK to acknowledge successfull device registration
 No of registered device now 5
@@ -155,9 +155,80 @@ No of registered device now 5
 AC_1 Received a message on topic device/AC_1/REGISTER_ACK saying AC_1 registered successfully
 
 
+...........Wait for 15 secs...................................................................................................
 
-ALL devices registered at edge server are following 
-[{'device_id': 'LIGHT_0', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_0', 'device_type': 'LIGHT', 'room_type': 'KITCHEN'}}, {'device_id': 'LIGHT_1', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_1', 'device_type': 'LIGHT', 'room_type': 'BR1'}}, {'device_id': 'LIGHT_2', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'LIGHT_2', 'device_type': 'LIGHT', 'room_type': 'BR2'}}, {'device_id': 'AC_0', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'AC_0', 'device_type': 'AC', 'room_type': 'BR1'}}, {'device_id': 'AC_1', 'device': {'timestamp': '2021-10-18 13:34:40', 'device_id': 'AC_1', 'device_type': 'AC', 'room_type': 'BR2'}}]
+######################Question 3b AC TEMPERATURE CONTROL COMMAND on basis of device_id,device_type,room_type or ALL.############################################
+
+###### AC TEMPERATURE CONTROL on basis of device_id AC_0##################################################################
+Published to device/AC_0/TEMPERATURE change temperature to 23 on basis of device_id
+
+...........Wait for 10 secs...................................................................................................
+
+AC_0 Received a message on topic device/AC_0/TEMPERATURE
+
+Inside set temperature for AC_0
+Temperature commanded to set is 23
+
+Published by AC_0 to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server
+Received following message on Edge server on topic device/ACKTEMPERATURE
+Device AC_0 temperature successfully set to  23
+
+###### AC TEMPERATURE CONTROL on basis of room_type BR2##################################################################
+Published to device/BR2/TEMPERATURE change temperature to 30 on basis of room_type
+
+...........Wait for 10 secs...................................................................................................
+
+AC_1 Received a message on topic device/BR2/TEMPERATURE
+
+Inside set temperature for AC_1
+Temperature commanded to set is 30
+
+Published by AC_1 to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server
+Received following message on Edge server on topic device/ACKTEMPERATURE
+Device AC_1 temperature successfully set to  30
+
+###### AC TEMPERATURE CONTROL on basis of device_type AC##################################################################
+Published to device/AC/TEMPERATURE change temperature to 20 on basis of device_type
+
+...........Wait for 10 secs...................................................................................................
+
+AC_1 Received a message on topic device/AC/TEMPERATURE
+
+Inside set temperature for AC_1
+AC_0 Received a message on topic device/AC/TEMPERATURE
+
+Inside set temperature for AC_0
+Temperature commanded to set is 20
+
+Published by AC_0 to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server
+
+Temperature commanded to set is 20
+
+Published by AC_1 to topic device/ACKTEMPERATURE to send device TEMPERATURE operation success acknowledgement to edge server
+Received following message on Edge server on topic device/ACKTEMPERATURE
+Device AC_0 temperature successfully set to  20
+Received following message on Edge server on topic device/ACKTEMPERATURE
+Device AC_1 temperature successfully set to  20
+
+
+#############Device status of ALL AC devices after AC TEMPERATURE CONTROL #################################################################
+Published to device/AC/STATUS to get status of devices on basis of device_type
+
+Sleep for 10 sec..............................................................................................................
+
+AC_1 Received a message on topic device/AC/STATUS
+Inside consolidated_status for AC_1
+
+Published by AC_1 to topic device/ACKSTATUS to send device status to edge server
+
+AC_0 Received a message on topic device/AC/STATUS
+Inside consolidated_status for AC_0
+
+Published by AC_0 to topic device/ACKSTATUS to send device status to edge server
+
+
+Printing consolidated status of all devices in home . 
+[{'timestamp': '2021-10-18 13:29:49', 'switch_status': 'OFF', 'device_type': 'AC', 'device_id': 'AC_0', 'room_type': 'BR1', 'temperature': '20'}, {'timestamp': '2021-10-18 13:29:49', 'switch_status': 'OFF', 'device_type': 'AC', 'device_id': 'AC_1', 'room_type': 'BR2', 'temperature': '20'}]
 
 Smart Home Simulation stopped.
 
